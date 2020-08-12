@@ -1,8 +1,10 @@
+import os
 import rollbar
-rollbar.init('POST_SERVER_ITEM_ACCESS_TOKEN', 'production')  # access_token, environment
+
+rollbar.init(os.environ.get('POST_SERVER_ITEM_ACCESS_TOKEN'), 'production')
 
 try:
-    print("Hello rollbar")
+    b=a+1
 except IOError:
     rollbar.report_message('Got an IOError in the main loop', 'warning')
 except:
